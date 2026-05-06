@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>艺术家 · 个人主页</title>
+<title>王健宇 Wang Jianyu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -14,13 +14,9 @@
     --paper: #f7f4ef;
     --paper-dark: #ede8e0;
     --accent: #8b6c4a;
-    --accent-light: #c4a882;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--paper);
     color: var(--ink);
@@ -28,28 +24,21 @@
     overflow-x: hidden;
   }
 
-  /* ── 顶部导航 ── */
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 1.4rem 3rem;
-    background: rgba(247,244,239,0.9);
+    padding: 1.2rem 3rem;
+    background: rgba(247,244,239,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--paper-dark);
   }
-  .nav-name {
-    font-size: 1rem; font-weight: 300; letter-spacing: 0.2em;
-    color: var(--ink); text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--ink-soft); text-decoration: none;
-    transition: color 0.3s;
-  }
+  .nav-name { font-size: 0.95rem; font-weight: 300; letter-spacing: 0.18em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; transition: color 0.3s; }
   .nav-links a:hover { color: var(--ink); }
 
-  /* ── 首屏 Hero ── */
+  /* HERO */
   #hero {
     min-height: 100vh;
     display: grid; grid-template-columns: 1fr 1fr;
@@ -58,300 +47,134 @@
     gap: 4rem;
   }
   .hero-text { padding-left: 4rem; }
-  .hero-label {
-    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--ink-muted); margin-bottom: 1.8rem;
-  }
-  .hero-name {
-    font-size: clamp(3.5rem, 6vw, 5.5rem);
-    font-weight: 300; line-height: 1.05;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin-bottom: 1.5rem;
-  }
-  .hero-name em { font-style: italic; color: var(--accent); }
-  .hero-tagline {
-    font-size: 1.1rem; font-weight: 300; line-height: 1.8;
-    color: var(--ink-soft); max-width: 360px;
-    margin-bottom: 3rem;
-  }
-  .hero-cta {
-    display: inline-flex; align-items: center; gap: 0.8rem;
-    font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--ink); text-decoration: none;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 0.3rem;
-    transition: color 0.3s, border-color 0.3s;
-  }
+  .hero-label { font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 1.8rem; }
+  .hero-name { font-size: clamp(3.2rem, 5.5vw, 5rem); font-weight: 300; line-height: 1.08; color: var(--ink); margin-bottom: 0.5rem; }
+  .hero-name-en { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300; font-style: italic; color: var(--accent); margin-bottom: 1.8rem; display: block; letter-spacing: 0.06em; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-bottom: 2.5rem; }
+  .hero-tag { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); border: 1px solid var(--paper-dark); padding: 0.3rem 0.8rem; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 0.8rem; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 0.3rem; transition: color 0.3s, border-color 0.3s; }
   .hero-cta:hover { color: var(--accent); border-color: var(--accent); }
+  .hero-image { position: relative; height: 75vh; min-height: 480px; background: var(--paper-dark); overflow: hidden; }
+  .hero-image-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
+  .hero-image-placeholder span { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--ink-muted); text-transform: uppercase; }
+  .img-icon { width: 40px; height: 40px; opacity: 0.3; stroke: var(--ink-soft); fill: none; stroke-width: 1; }
 
-  /* 右侧：占位图（上线后换成你的真实照片） */
-  .hero-image {
-    position: relative; height: 75vh; min-height: 480px;
-    background: var(--paper-dark);
-    overflow: hidden;
-  }
-  .hero-image::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse at 70% 30%, #d4b896 0%, transparent 60%),
-      radial-gradient(ellipse at 20% 80%, #c8b8a4 0%, transparent 55%);
-    opacity: 0.5;
-  }
-  .hero-image-placeholder {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 1rem;
-  }
-  .hero-image-placeholder span {
-    font-size: 0.7rem; letter-spacing: 0.2em; color: var(--ink-muted);
-    text-transform: uppercase;
-  }
-  .img-icon {
-    width: 48px; height: 48px; opacity: 0.35;
-    stroke: var(--ink-soft); fill: none; stroke-width: 1;
-  }
+  /* DIVIDER */
+  .divider { display: flex; align-items: center; gap: 1.5rem; padding: 0 3rem; max-width: 1100px; margin: 0 auto; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--paper-dark); }
+  .divider-text { font-size: 0.63rem; letter-spacing: 0.32em; color: var(--ink-muted); white-space: nowrap; text-transform: uppercase; }
 
-  /* ── 分割线装饰 ── */
-  .divider {
-    display: flex; align-items: center; gap: 1.5rem;
-    padding: 0 3rem; margin: 0 auto;
-    max-width: 1100px;
-  }
-  .divider::before, .divider::after {
-    content: ''; flex: 1;
-    height: 1px; background: var(--paper-dark);
-  }
-  .divider-text {
-    font-size: 0.65rem; letter-spacing: 0.3em;
-    color: var(--ink-muted); white-space: nowrap;
-  }
+  /* WORKS */
+  #works { padding: 5rem 3rem 6rem; max-width: 1200px; margin: 0 auto; }
+  .works-header { margin-bottom: 2rem; }
+  .works-title { font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 300; }
+  .works-title em { font-style: italic; color: var(--accent); }
+  .cat-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem; }
+  .cat-tab { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid var(--paper-dark); cursor: pointer; background: transparent; color: var(--ink-muted); transition: all 0.25s; font-family: inherit; }
+  .cat-tab:hover { border-color: var(--ink-soft); color: var(--ink-soft); }
+  .cat-tab.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-  /* ── 作品展示 ── */
-  #works {
-    padding: 6rem 3rem;
-    max-width: 1200px; margin: 0 auto;
-  }
-  .section-header {
-    display: flex; justify-content: space-between; align-items: baseline;
-    margin-bottom: 3.5rem;
-  }
-  .section-title {
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 300; letter-spacing: -0.01em;
-  }
-  .section-title em { font-style: italic; color: var(--accent); }
-  .section-meta {
-    font-size: 0.72rem; letter-spacing: 0.2em;
-    color: var(--ink-muted); text-transform: uppercase;
-  }
+  .cat-section { display: none; }
+  .cat-section.visible { display: block; }
 
-  .works-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto auto;
-    gap: 1.2rem;
-  }
-  .work-card {
-    background: var(--paper-dark); overflow: hidden;
-    position: relative; cursor: pointer;
-  }
-  .work-card:nth-child(1) { grid-column: span 7; grid-row: span 1; aspect-ratio: 16/10; }
-  .work-card:nth-child(2) { grid-column: span 5; grid-row: span 1; aspect-ratio: 4/5; }
-  .work-card:nth-child(3) { grid-column: span 4; aspect-ratio: 4/5; }
-  .work-card:nth-child(4) { grid-column: span 4; aspect-ratio: 4/5; }
-  .work-card:nth-child(5) { grid-column: span 4; aspect-ratio: 4/5; }
-
-  .work-card::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(26,22,18,0.6) 0%, transparent 50%);
-    opacity: 0; transition: opacity 0.4s;
-  }
+  .works-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
+  .work-card { background: var(--paper-dark); overflow: hidden; position: relative; cursor: pointer; }
+  .work-card.w7 { grid-column: span 7; aspect-ratio: 16/10; }
+  .work-card.w5 { grid-column: span 5; aspect-ratio: 4/5; }
+  .work-card.w4 { grid-column: span 4; aspect-ratio: 4/5; }
+  .work-card.w6 { grid-column: span 6; aspect-ratio: 4/3; }
+  .work-card.w3 { grid-column: span 3; aspect-ratio: 1; }
+  .work-card.w12 { grid-column: span 12; aspect-ratio: 21/9; }
+  .work-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,22,18,0.65) 0%, transparent 55%); opacity: 0; transition: opacity 0.4s; }
   .work-card:hover::after { opacity: 1; }
-  .work-info {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 1.5rem; z-index: 1;
-    transform: translateY(8px); opacity: 0;
-    transition: all 0.4s;
-  }
+  .work-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.4rem; z-index: 1; transform: translateY(8px); opacity: 0; transition: all 0.4s; }
   .work-card:hover .work-info { transform: translateY(0); opacity: 1; }
-  .work-title {
-    font-size: 1rem; font-weight: 300; color: #f7f4ef;
-    margin-bottom: 0.3rem;
-  }
-  .work-year {
-    font-size: 0.7rem; letter-spacing: 0.2em;
-    color: rgba(247,244,239,0.65);
-  }
+  .work-title { font-size: 1rem; font-weight: 300; color: #f7f4ef; margin-bottom: 0.3rem; }
+  .work-year { font-size: 0.65rem; letter-spacing: 0.2em; color: rgba(247,244,239,0.65); }
+  .work-desc { font-size: 0.78rem; line-height: 1.7; color: rgba(247,244,239,0.8); margin-top: 0.5rem; }
+  .work-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.6rem; }
+  .wp-num { font-size: 2.5rem; font-weight: 300; color: rgba(255,255,255,0.25); font-family: 'Cormorant Garamond', serif; }
+  .wp-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .wp-a { background: linear-gradient(135deg, #c4b0a0 0%, #8c6f5e 100%); }
+  .wp-b { background: linear-gradient(135deg, #a8b4b0 0%, #607870 100%); }
+  .wp-c { background: linear-gradient(135deg, #b4a8c0 0%, #786090 100%); }
+  .wp-d { background: linear-gradient(135deg, #b8bca4 0%, #707a58 100%); }
+  .wp-e { background: linear-gradient(135deg, #c0b0a0 0%, #907060 100%); }
+  .wp-f { background: linear-gradient(135deg, #a0b0c0 0%, #507090 100%); }
+  .wp-g { background: linear-gradient(135deg, #c0a8a8 0%, #906060 100%); }
 
-  /* 占位色块（上线后换成 <img> 标签） */
-  .work-placeholder {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .wp-1 { background: linear-gradient(135deg, #c9b8a4 0%, #9a8472 100%); }
-  .wp-2 { background: linear-gradient(135deg, #b8c4c0 0%, #7a9490 100%); }
-  .wp-3 { background: linear-gradient(135deg, #c4b4a0 0%, #887060 100%); }
-  .wp-4 { background: linear-gradient(135deg, #a8b8b0 0%, #708880 100%); }
-  .wp-5 { background: linear-gradient(135deg, #b8a8c0 0%, #887098 100%); }
-  .wp-num {
-    font-size: 3rem; font-weight: 300;
-    color: rgba(255,255,255,0.3);
-    font-family: 'Cormorant Garamond', serif;
-  }
+  /* special cards */
+  .music-card { padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; aspect-ratio: unset !important; }
+  .music-name { font-size: 2rem; font-weight: 300; font-style: italic; color: var(--accent); margin-bottom: 0.5rem; }
+  .music-platform { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 2rem; }
+  .music-link { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 0.2rem; transition: color 0.3s; }
+  .music-link:hover { color: var(--accent); }
+  .writing-card { background: var(--ink); padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; aspect-ratio: unset !important; }
+  .writing-genre { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(247,244,239,0.4); margin-bottom: 1rem; }
+  .writing-title { font-size: 1.6rem; font-weight: 300; color: var(--paper); font-style: italic; margin-bottom: 2rem; line-height: 1.3; }
+  .writing-link { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,244,239,0.6); text-decoration: none; border-bottom: 1px solid rgba(247,244,239,0.3); padding-bottom: 0.2rem; transition: color 0.3s; }
+  .writing-link:hover { color: var(--paper); }
 
-  /* ── 关于我 ── */
-  #about {
-    padding: 7rem 3rem;
-    background: var(--paper-dark);
-  }
-  .about-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 2fr; gap: 6rem;
-    align-items: start;
-  }
-  .about-sidebar {}
-  .about-portrait {
-    width: 100%; aspect-ratio: 3/4;
-    background: var(--paper);
-    margin-bottom: 2rem;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-  }
-  .about-portrait::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 40% 40%, #d4b896 0%, #b8a088 100%);
-    opacity: 0.4;
-  }
-  .portrait-label {
-    font-size: 0.65rem; letter-spacing: 0.25em; color: var(--ink-muted);
-    text-transform: uppercase; position: relative;
-  }
+  /* ABOUT */
+  #about { padding: 7rem 3rem; background: var(--paper-dark); }
+  .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start; }
+  .about-portrait { width: 100%; aspect-ratio: 3/4; background: var(--paper); margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .about-portrait::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 40% 40%, #d4b896 0%, #b8a088 100%); opacity: 0.4; }
+  .portrait-label { font-size: 0.62rem; letter-spacing: 0.25em; color: var(--ink-muted); text-transform: uppercase; position: relative; }
   .about-contact-list { list-style: none; }
-  .about-contact-list li {
-    padding: 0.8rem 0; border-bottom: 1px solid var(--paper);
-    font-size: 0.82rem; color: var(--ink-soft);
-    display: flex; justify-content: space-between;
-  }
-  .about-contact-list a {
-    color: var(--accent); text-decoration: none;
-  }
-  .about-main {}
-  .about-heading {
-    font-size: clamp(2.2rem, 3vw, 3rem);
-    font-weight: 300; line-height: 1.2;
-    margin-bottom: 2.5rem;
-  }
+  .about-contact-list li { padding: 0.75rem 0; border-bottom: 1px solid var(--paper); font-size: 0.8rem; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 1rem; }
+  .about-contact-list a { color: var(--accent); text-decoration: none; }
+  .about-heading { font-size: clamp(2rem, 2.8vw, 2.8rem); font-weight: 300; line-height: 1.2; margin-bottom: 2rem; }
   .about-heading em { font-style: italic; color: var(--accent); }
-  .about-bio {
-    font-size: 1.05rem; line-height: 2;
-    color: var(--ink-soft); margin-bottom: 2rem;
-  }
-  .about-stats {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 2rem; margin-top: 3.5rem;
-    padding-top: 3rem; border-top: 1px solid var(--paper);
-  }
-  .stat-number {
-    font-size: 2.5rem; font-weight: 300;
-    color: var(--accent); display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-  }
-  .stat-label {
-    font-size: 0.72rem; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--ink-muted);
-    margin-top: 0.4rem; display: block;
-  }
+  .about-bio { font-size: 1rem; line-height: 2; color: var(--ink-soft); margin-bottom: 1.5rem; }
+  .about-medium-list { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--paper); display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .medium-tag { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(--ink-muted); color: var(--ink-soft); }
 
-  /* ── 联系 ── */
-  #contact {
-    padding: 7rem 3rem;
-    text-align: center;
-    max-width: 700px; margin: 0 auto;
-  }
-  .contact-title {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 300; line-height: 1.2;
-    margin-bottom: 1.5rem;
-  }
+  /* CONTACT */
+  #contact { padding: 7rem 3rem; text-align: center; max-width: 680px; margin: 0 auto; }
+  .contact-title { font-size: clamp(2.2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
   .contact-title em { font-style: italic; color: var(--accent); }
-  .contact-desc {
-    font-size: 1rem; color: var(--ink-soft);
-    line-height: 1.9; margin-bottom: 3rem;
-  }
-  .contact-email {
-    display: inline-block;
-    font-size: 1.1rem; color: var(--ink);
-    text-decoration: none; letter-spacing: 0.05em;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 0.3rem;
-    transition: color 0.3s;
-  }
+  .contact-desc { font-size: 1rem; color: var(--ink-soft); line-height: 1.9; margin-bottom: 3rem; }
+  .contact-email { display: inline-block; font-size: 1.05rem; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; border-bottom: 1px solid var(--accent); padding-bottom: 0.3rem; transition: color 0.3s; }
   .contact-email:hover { color: var(--accent); }
-  .contact-social {
-    display: flex; justify-content: center; gap: 2.5rem;
-    margin-top: 3rem; list-style: none;
-  }
-  .contact-social a {
-    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--ink-muted); text-decoration: none;
-    transition: color 0.3s;
-  }
+  .contact-social { display: flex; justify-content: center; gap: 2.5rem; margin-top: 3rem; list-style: none; flex-wrap: wrap; }
+  .contact-social a { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color 0.3s; }
   .contact-social a:hover { color: var(--ink); }
 
-  /* ── 页脚 ── */
-  footer {
-    padding: 2.5rem 3rem;
-    background: var(--ink);
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .footer-name {
-    font-size: 0.78rem; letter-spacing: 0.2em;
-    color: rgba(247,244,239,0.5); text-transform: uppercase;
-  }
-  .footer-copy {
-    font-size: 0.72rem; color: rgba(247,244,239,0.3);
-    letter-spacing: 0.1em;
-  }
+  /* FOOTER */
+  footer { padding: 2.5rem 3rem; background: var(--ink); display: flex; justify-content: space-between; align-items: center; }
+  .footer-name { font-size: 0.75rem; letter-spacing: 0.2em; color: rgba(247,244,239,0.5); text-transform: uppercase; }
+  .footer-copy { font-size: 0.68rem; color: rgba(247,244,239,0.28); letter-spacing: 0.1em; }
 
-  /* ── 入场动画 ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .hero-label  { animation: fadeUp 0.8s ease both; animation-delay: 0.1s; }
-  .hero-name   { animation: fadeUp 0.8s ease both; animation-delay: 0.25s; }
-  .hero-tagline{ animation: fadeUp 0.8s ease both; animation-delay: 0.4s; }
-  .hero-cta    { animation: fadeUp 0.8s ease both; animation-delay: 0.55s; }
-  .hero-image  { animation: fadeUp 0.8s ease both; animation-delay: 0.15s; }
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-label   { animation: fadeUp 0.8s ease both 0.1s; }
+  .hero-name    { animation: fadeUp 0.8s ease both 0.2s; }
+  .hero-name-en { animation: fadeUp 0.8s ease both 0.3s; }
+  .hero-tags    { animation: fadeUp 0.8s ease both 0.4s; }
+  .hero-cta     { animation: fadeUp 0.8s ease both 0.5s; }
+  .hero-image   { animation: fadeUp 0.8s ease both 0.15s; }
 
-  /* ── 响应式 ── */
+  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.5rem; }
-    #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2.5rem; }
+    .nav-links { gap: 1.2rem; }
+    #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2rem; }
     .hero-text { padding-left: 0; }
-    .hero-image { height: 50vw; min-height: 280px; }
-    #works { padding: 4rem 1.5rem; }
+    .hero-image { height: 55vw; min-height: 260px; }
+    #works { padding: 3.5rem 1.5rem; }
     .works-grid { grid-template-columns: 1fr 1fr; }
-    .work-card:nth-child(n) { grid-column: span 1; aspect-ratio: 1; }
-    .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .work-card.w7,.work-card.w5,.work-card.w4,.work-card.w6,.work-card.w3,.work-card.w12 { grid-column: span 1; aspect-ratio: 1; }
+    .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .about-portrait { aspect-ratio: 16/9; }
-    .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+    footer { flex-direction: column; gap: 0.6rem; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<!-- 导航 -->
 <nav>
-  <a class="nav-name" href="#">你的名字</a>
+  <a class="nav-name" href="#">王健宇</a>
   <ul class="nav-links">
     <li><a href="#works">作品</a></li>
     <li><a href="#about">关于</a></li>
@@ -359,137 +182,276 @@
   </ul>
 </nav>
 
-<!-- Hero 首屏 -->
 <section id="hero">
   <div class="hero-text">
-    <p class="hero-label">视觉艺术家 · 中国</p>
-    <h1 class="hero-name">你的<br><em>名字</em></h1>
-    <p class="hero-tagline">用光影与色彩探索内心的边界，每一幅作品都是一次对话。</p>
+    <p class="hero-label">艺术家 · 中国</p>
+    <h1 class="hero-name">王健宇</h1>
+    <span class="hero-name-en">Wang Jianyu</span>
+    <div class="hero-tags">
+      <span class="hero-tag">行为艺术</span>
+      <span class="hero-tag">装置</span>
+      <span class="hero-tag">音乐</span>
+      <span class="hero-tag">游戏</span>
+      <span class="hero-tag">表演</span>
+      <span class="hero-tag">写作</span>
+      <span class="hero-tag">策展</span>
+    </div>
     <a href="#works" class="hero-cta">浏览作品 →</a>
   </div>
   <div class="hero-image">
+    <!-- 上线后替换为：<img src="portrait.jpg" style="width:100%;height:100%;object-fit:cover"> -->
     <div class="hero-image-placeholder">
       <svg class="img-icon" viewBox="0 0 48 48">
         <rect x="4" y="8" width="40" height="32" rx="3"/>
         <circle cx="16" cy="20" r="4"/>
         <path d="M4 34 l12-12 8 8 8-10 12 12"/>
       </svg>
-      <span>此处替换为你的代表作图片</span>
+      <span>艺术家照片</span>
     </div>
   </div>
 </section>
 
-<div class="divider"><span class="divider-text">精选作品</span></div>
+<div class="divider"><span class="divider-text">创作</span></div>
 
-<!-- 作品展示 -->
 <section id="works">
-  <div class="section-header">
-    <h2 class="section-title">近期<em>创作</em></h2>
-    <span class="section-meta">2022 — 2025</span>
+  <div class="works-header">
+    <h2 class="works-title">全部<em>作品</em></h2>
   </div>
-  <div class="works-grid">
-    <div class="work-card">
-      <div class="work-placeholder wp-1"><span class="wp-num">I</span></div>
-      <div class="work-info">
-        <p class="work-title">作品名称一</p>
-        <p class="work-year">2025 · 布面油彩</p>
+
+  <div class="cat-tabs">
+    <button class="cat-tab active" data-cat="all">全部</button>
+    <button class="cat-tab" data-cat="performance">行为艺术</button>
+    <button class="cat-tab" data-cat="installation">装置艺术</button>
+    <button class="cat-tab" data-cat="music">音乐</button>
+    <button class="cat-tab" data-cat="game">游戏</button>
+    <button class="cat-tab" data-cat="acting">表演</button>
+    <button class="cat-tab" data-cat="writing">写作</button>
+    <button class="cat-tab" data-cat="curating">策展</button>
+  </div>
+
+  <!-- 行为艺术 -->
+  <div class="cat-section visible" id="cat-performance" data-category="performance">
+    <div class="works-grid">
+      <div class="work-card w7">
+        <!-- 替换图片：<img src="软(1).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-a"><span class="wp-num">软</span><span class="wp-label">软(1)</span></div>
+        <div class="work-info">
+          <p class="work-title">软 SOFT</p>
+          <p class="work-year">2020 · 行为艺术</p>
+          <p class="work-desc">一只手戴手套，一只不戴，将蜡覆于全部树枝，同时加热使蜡保持软化，然后将手套烧掉。"把燃烧交给火，省去我的暴露，隔岸观火"。</p>
+        </div>
       </div>
-    </div>
-    <div class="work-card">
-      <div class="work-placeholder wp-2"><span class="wp-num">II</span></div>
-      <div class="work-info">
-        <p class="work-title">作品名称二</p>
-        <p class="work-year">2025 · 装置艺术</p>
+      <div class="work-card w5">
+        <!-- 替换图片：<img src="软(2).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-b"><span class="wp-label">软(2)</span></div>
+        <div class="work-info"><p class="work-title">软 SOFT</p><p class="work-year">2020 · 行为艺术</p></div>
       </div>
-    </div>
-    <div class="work-card">
-      <div class="work-placeholder wp-3"><span class="wp-num">III</span></div>
-      <div class="work-info">
-        <p class="work-title">作品名称三</p>
-        <p class="work-year">2024 · 摄影</p>
-      </div>
-    </div>
-    <div class="work-card">
-      <div class="work-placeholder wp-4"><span class="wp-num">IV</span></div>
-      <div class="work-info">
-        <p class="work-title">作品名称四</p>
-        <p class="work-year">2024 · 数字媒体</p>
-      </div>
-    </div>
-    <div class="work-card">
-      <div class="work-placeholder wp-5"><span class="wp-num">V</span></div>
-      <div class="work-info">
-        <p class="work-title">作品名称五</p>
-        <p class="work-year">2023 · 纸本水彩</p>
+      <div class="work-card w12">
+        <!-- 替换图片：<img src="软(3).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-c"><span class="wp-label">软(3)</span></div>
+        <div class="work-info"><p class="work-title">软 SOFT — 全景</p><p class="work-year">2020 · 行为艺术</p></div>
       </div>
     </div>
   </div>
+
+  <!-- 装置艺术 -->
+  <div class="cat-section" id="cat-installation" data-category="installation">
+    <div class="works-grid">
+      <div class="work-card w6">
+        <!-- 替换图片：<img src="脐带 (1).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-d"><span class="wp-num">脐带</span><span class="wp-label">脐带(1)</span></div>
+        <div class="work-info"><p class="work-title">脐带 Umbilical Cord</p><p class="work-year">2019 · 装置艺术</p></div>
+      </div>
+      <div class="work-card w6">
+        <!-- 替换图片：<img src="脐带 (2).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-e"><span class="wp-label">脐带(2)</span></div>
+        <div class="work-info"><p class="work-title">脐带 Umbilical Cord</p><p class="work-year">2019 · 装置艺术</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 音乐 -->
+  <div class="cat-section" id="cat-music" data-category="music">
+    <div class="works-grid">
+      <div class="work-card w6 music-card">
+        <div>
+          <p class="music-name">Fufu</p>
+          <p class="music-platform">网易云音乐 · 音乐人主页</p>
+        </div>
+        <a class="music-link" href="https://163cn.tv/6yXnfOE" target="_blank">前往主页 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 游戏 -->
+  <div class="cat-section" id="cat-game" data-category="game">
+    <div class="works-grid">
+      <div class="work-card w7">
+        <!-- 替换图片：<img src="lable(0).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-f"><span class="wp-num">标签</span><span class="wp-label">Label</span></div>
+        <div class="work-info">
+          <p class="work-title">标签 Label</p>
+          <p class="work-year">2019 · PC 游戏</p>
+          <p class="work-desc">故事设定在虚构的集权国家，玩家在战争与气候变化的双重背景下扮演"公民审查员"。</p>
+        </div>
+      </div>
+      <div class="work-card w5">
+        <!-- 替换图片：<img src="lable(1).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-g"><span class="wp-label">lable(1)</span></div>
+        <div class="work-info"><p class="work-title">标签 Label</p><p class="work-year">2019 · PC 游戏</p></div>
+      </div>
+      <div class="work-card w4">
+        <!-- 替换图片：<img src="lable(2).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-a"><span class="wp-label">lable(2)</span></div>
+        <div class="work-info"><p class="work-title">标签 Label</p><p class="work-year">2019</p></div>
+      </div>
+      <div class="work-card w4">
+        <!-- 替换图片：<img src="lable(3).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-b"><span class="wp-label">lable(3)</span></div>
+        <div class="work-info"><p class="work-title">标签 Label</p><p class="work-year">2019</p></div>
+      </div>
+      <div class="work-card w4">
+        <!-- 替换图片：<img src="lable(5).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-c"><span class="wp-label">lable(5)</span></div>
+        <div class="work-info"><p class="work-title">标签 Label</p><p class="work-year">2019</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 表演 -->
+  <div class="cat-section" id="cat-acting" data-category="acting">
+    <div class="works-grid">
+      <div class="work-card w4">
+        <!-- 替换图片：<img src="河边的错误.jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-a"><span class="wp-num" style="font-size:1.1rem;text-align:center;padding:0 1rem">河边的错误</span></div>
+        <div class="work-info"><p class="work-title">《河边的错误》</p><p class="work-year">电影 · 饰演 许亮</p></div>
+      </div>
+      <div class="work-card w4">
+        <!-- 替换图片：<img src="怪屋.jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-d"><span class="wp-num" style="font-size:1.5rem">怪屋</span></div>
+        <div class="work-info"><p class="work-title">《怪屋》</p><p class="work-year">电影 · 饰演 何云宫</p></div>
+      </div>
+      <div class="work-card w4">
+        <!-- 替换图片：<img src="天空囚徒设计所.jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-f"><span class="wp-num" style="font-size:0.9rem;text-align:center;padding:0 1rem">天空囚徒设计所</span></div>
+        <div class="work-info"><p class="work-title">《天空囚徒设计所》</p><p class="work-year">话剧 · 饰演 弗连可里</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 写作 -->
+  <div class="cat-section" id="cat-writing" data-category="writing">
+    <div class="works-grid">
+      <div class="work-card w6 writing-card">
+        <div>
+          <p class="writing-genre">短篇小说</p>
+          <p class="writing-title">《绿水泳池》</p>
+        </div>
+        <a class="writing-link" href="https://mp.weixin.qq.com/s/66Yx3_3UpyXYzbxFuF0LRg" target="_blank">阅读全文 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 展览策划 -->
+  <div class="cat-section" id="cat-curating" data-category="curating">
+    <div class="works-grid">
+      <div class="work-card w5">
+        <!-- 替换图片：<img src="展览 (1).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-b"><span class="wp-num" style="font-size:1rem;text-align:center;padding:0 0.5rem">假艺术野展览</span></div>
+        <div class="work-info"><p class="work-title">假艺术野展览</p><p class="work-year">展览策划</p></div>
+      </div>
+      <div class="work-card w4">
+        <!-- 替换图片：<img src="展览 (2).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-e"><span class="wp-label">展览(2)</span></div>
+        <div class="work-info"><p class="work-title">假艺术野展览</p><p class="work-year">展览策划</p></div>
+      </div>
+      <div class="work-card w3">
+        <!-- 替换图片：<img src="展览 (3).jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="work-placeholder wp-g"><span class="wp-label">展览(3)</span></div>
+        <div class="work-info"><p class="work-title">假艺术野展览</p><p class="work-year">展览策划</p></div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <div class="divider"><span class="divider-text">关于艺术家</span></div>
 
-<!-- 关于我 -->
 <section id="about">
   <div class="about-inner">
-    <div class="about-sidebar">
+    <div>
       <div class="about-portrait">
+        <!-- 替换为：<img src="portrait.jpg" style="width:100%;height:100%;object-fit:cover"> -->
         <span class="portrait-label">艺术家照片</span>
       </div>
       <ul class="about-contact-list">
-        <li><span>所在地</span><span>中国 · 上海</span></li>
-        <li><span>邮箱</span><a href="mailto:hi@codalab.space">hi@codalab.space</a></li>
-        <li><span>微信</span><span>your_wechat</span></li>
-        <li><span>Instagram</span><a href="#">@your_handle</a></li>
+        <li><span>邮箱</span><a href="mailto:fumifumi0110@163.com">fumifumi0110@163.com</a></li>
+        <li><span>Instagram</span><a href="https://instagram.com/wangjianyu01" target="_blank">@wangjianyu01</a></li>
+        <li><span>小红书</span><span>@王健宇</span></li>
+        <li><span>网易云音乐</span><a href="https://163cn.tv/6yXnfOE" target="_blank">Fufu</a></li>
       </ul>
     </div>
-    <div class="about-main">
-      <h2 class="about-heading">关于<em>我</em>的<br>创作世界</h2>
+    <div>
+      <h2 class="about-heading">王健宇<br><em>Wang Jianyu</em></h2>
       <p class="about-bio">
-        这里写你的个人介绍。讲述你的艺术背景、创作理念，以及是什么让你走上艺术这条路。
-        用真实的语言，让来访者感受到你作品背后的人。
+        王健宇是一位跨媒介艺术家，创作横跨行为艺术、装置、音乐、游戏、表演、写作与策展。
+        他的实践游走于身体、材料与系统之间，探索权力结构、亲密关系与边界的可能形态。
       </p>
       <p class="about-bio">
-        你可以提到你的教育经历、重要展览经历，或者对你影响最深的艺术家和事件。
-        这段文字不需要很长，真诚比完美更重要。
+        代表作《软 SOFT》（2020）以蜡、火焰与手套构成行为现场，将燃烧的主动权交还给物质本身；装置作品《脐带》（2019）追问连接与切断的伦理。游戏《标签 Label》将玩家置于虚构集权体制内部，以互动叙事触碰审查与身份议题。
       </p>
-      <div class="about-stats">
-        <div>
-          <span class="stat-number">12</span>
-          <span class="stat-label">年创作历程</span>
-        </div>
-        <div>
-          <span class="stat-number">38</span>
-          <span class="stat-label">件代表作品</span>
-        </div>
-        <div>
-          <span class="stat-number">6</span>
-          <span class="stat-label">次群展个展</span>
-        </div>
+      <p class="about-bio">
+        除视觉与声音创作外，他亦活跃于影视与戏剧表演，出演电影《河边的错误》《怪屋》及话剧《天空囚徒设计所》。
+      </p>
+      <div class="about-medium-list">
+        <span class="medium-tag">行为艺术</span>
+        <span class="medium-tag">装置艺术</span>
+        <span class="medium-tag">音乐</span>
+        <span class="medium-tag">游戏设计</span>
+        <span class="medium-tag">影视表演</span>
+        <span class="medium-tag">舞台剧</span>
+        <span class="medium-tag">短篇写作</span>
+        <span class="medium-tag">展览策划</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 联系 -->
 <section id="contact">
   <h2 class="contact-title">一起<em>创造</em><br>些什么</h2>
   <p class="contact-desc">
-    无论是展览合作、作品收藏，还是只是想聊聊艺术——<br>我很期待与你的对话。
+    无论是展览合作、作品收藏、表演项目，<br>还是只是想聊聊——欢迎随时联系。
   </p>
-  <a class="contact-email" href="mailto:hi@codalab.space">hi@codalab.space</a>
+  <a class="contact-email" href="mailto:fumifumi0110@163.com">fumifumi0110@163.com</a>
   <ul class="contact-social">
-    <li><a href="#">微博</a></li>
-    <li><a href="#">Instagram</a></li>
-    <li><a href="#">小红书</a></li>
-    <li><a href="#">公众号</a></li>
+    <li><a href="https://instagram.com/wangjianyu01" target="_blank">Instagram</a></li>
+    <li><a href="#" target="_blank">小红书</a></li>
+    <li><a href="https://163cn.tv/6yXnfOE" target="_blank">网易云音乐</a></li>
   </ul>
 </section>
 
-<!-- 页脚 -->
 <footer>
-  <span class="footer-name">你的名字 · 艺术家</span>
+  <span class="footer-name">王健宇 · Wang Jianyu</span>
   <span class="footer-copy">© 2025 codalab.space</span>
 </footer>
 
+<script>
+  const tabs = document.querySelectorAll('.cat-tab');
+  const sections = document.querySelectorAll('.cat-section');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.cat;
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      sections.forEach(sec => {
+        if (cat === 'all' || sec.dataset.category === cat) {
+          sec.classList.add('visible');
+        } else {
+          sec.classList.remove('visible');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
